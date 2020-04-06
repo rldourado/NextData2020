@@ -1,0 +1,6 @@
+
+SHOW DATABASES;
+
+CREATE DATABASE next;
+
+USE next;
