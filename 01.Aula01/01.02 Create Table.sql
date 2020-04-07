@@ -7,5 +7,6 @@ CREATE TABLE next.confirmed (
   lng       DECIMAL(7,3)    NULL,
   date      DATETIME        NULL,
   cases     INT             NULL,
+  deleted   BOOL            NOT NULL DEFAULT FALSE,
   PRIMARY KEY ( id )
 );
