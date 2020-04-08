@@ -30,6 +30,8 @@ end
 VAGRANTFILE_API_VERSION = "2"
 VAGRANT_ROOT = File.dirname( File.expand_path( __FILE__ ) )
 
+#ENV["LC_ALL"] = "pt_BR.UTF-8"
+
 Vagrant.configure( VAGRANTFILE_API_VERSION ) do |config|
 
   os_type        = 'windows'
@@ -45,8 +47,11 @@ Vagrant.configure( VAGRANTFILE_API_VERSION ) do |config|
   ip_address              = '192.168.33.10'
 
   config.vm.box     = box_name
+  config.vm.boot_timeout = 1200
   config.vm.define environment_name do |t|
   end
+
+  config.vm.synced_folder "../python", "/work/python"
 
   config.vm.network "private_network", ip: ip_address
 
@@ -57,17 +62,17 @@ Vagrant.configure( VAGRANTFILE_API_VERSION ) do |config|
     vb.name   = environment_name
   end
 
-  config.vm.provision "shell", inline: <<-SHELL
-    apt update && apt upgrade -y && apt autoremove -y
-    apt install -y zsh git wget
-    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 
-    chsh -s /bin/zsh vagrant
-    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
-    cp /root/.zshrc /home/vagrant/
-    cp -r /root/.oh-my-zsh /home/vagrant/
-    chown -R vagrant:vagrant /home/vagrant/.zshrc
-    chown -R vagrant:vagrant /home/vagrant/.oh-my-zsh/
-  SHELL
+  #config.vm.provision "shell", inline: <<-SHELL
+    #apt update && apt upgrade -y && apt autoremove -y
+    #apt install -y zsh git wget
+    #wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 
+    #chsh -s /bin/zsh vagrant
+    #sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
+    #cp /root/.zshrc /home/vagrant/
+    #cp -r /root/.oh-my-zsh /home/vagrant/
+    #chown -R vagrant:vagrant /home/vagrant/.zshrc
+    #chown -R vagrant:vagrant /home/vagrant/.oh-my-zsh/
+  #SHELL
 
   config.vm.provision "docker" do |d|
     d.pull_images "mysql:5.7.29"
