@@ -62,15 +62,20 @@ Vagrant.configure( VAGRANTFILE_API_VERSION ) do |config|
     apt install -y zsh git wget
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh 
     chsh -s /bin/zsh vagrant
-    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="3den"/g' ~/.zshrc
+    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="gentoo"/g' ~/.zshrc
+    cp /root/.zshrc /home/vagrant/
+    cp -r /root/.oh-my-zsh /home/vagrant/
+    chown -R vagrant:vagrant /home/vagrant/.zshrc
+    chown -R vagrant:vagrant /home/vagrant/.oh-my-zsh/
   SHELL
 
-  #config.vm.provision "docker",
-  #  images: [ "mysql:8.0.19" ]
-
   config.vm.provision "docker" do |d|
-    d.run "mysql:5.7.29",
-      args: "--name mysql -e MYSQL_ROOT_PASSWORD=password --detach --publish 3306:3306"
+    d.pull_images "mysql:5.7.29"
+    d.pull_images "python:3.8.2"
+    d.pull_images "mongo:4.2.5"
+    #d.run "mysql:5.7.29",
+    #  args: "--name mysql -e MYSQL_ROOT_PASSWORD=password --detach --publish 3306:3306"
+    d.post_install_provision "shell", inline:"docker network create next"
   end
 
   if ARGV[0] == "up" or ARGV[0] == "reload" or ARGV[0] == "status"
