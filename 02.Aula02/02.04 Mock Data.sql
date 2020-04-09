@@ -1,17 +1,19 @@
+
 create table MOCK_DATA (
-	id INT,
-	first_name VARCHAR(50),
-	last_name VARCHAR(50),
-	email VARCHAR(50),
-	gender VARCHAR(50),
-	ip_address VARCHAR(20),
-	city VARCHAR(50),
-	country VARCHAR(50),
-	avatar VARCHAR(50),
-	car_make VARCHAR(50),
-	car_model VARCHAR(50),
-	car_year VARCHAR(50)
+    id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(50),
+    gender VARCHAR(50),
+    ip_address VARCHAR(20),
+    city VARCHAR(50),
+    country VARCHAR(50),
+    avatar VARCHAR(150),
+    car_make VARCHAR(50),
+    car_model VARCHAR(50),
+    car_year VARCHAR(50)
 );
+
 insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, city, country, avatar, car_make, car_model, car_year) values (1, 'Heriberto', 'Dunnett', 'hdunnett0@shinystat.com', 'Male', '246.137.173.116', 'Nový Malín', 'Czech Republic', 'https://robohash.org/quasiestipsa.png?size=50x50&set=set1', 'Infiniti', 'QX', 2011);
 insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, city, country, avatar, car_make, car_model, car_year) values (2, 'Alane', 'Harkin', 'aharkin1@example.com', 'Female', '20.116.130.228', 'Shaba', 'China', 'https://robohash.org/autemiddolores.jpg?size=50x50&set=set1', 'Nissan', 'Maxima', 2007);
 insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, city, country, avatar, car_make, car_model, car_year) values (3, 'Janeta', 'Walklott', 'jwalklott2@rediff.com', 'Female', '107.222.210.116', 'Périgny', 'France', 'https://robohash.org/molestiaevelea.bmp?size=50x50&set=set1', 'Kia', 'Rio', 2009);
