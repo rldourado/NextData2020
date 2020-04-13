@@ -9,8 +9,8 @@ CREATE TABLE next.confirmed (
   date      DATETIME        NULL,
   cases     INT             NULL,
   deleted   BOOL            NOT NULL DEFAULT FALSE,
-  _created  DATETIME        NOT NULL DEFAULT CURRENT_DATE,
-  _updated  DATETIME        NOT NULL DEFAULT CURRENT_DATE,
+  _created  DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  _updated  DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY ( id )
 );
 
