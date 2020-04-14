@@ -24,5 +24,5 @@ newc.country = c.country
 newc.lat = c.lat
 newc.lng = c.lng
 newc.date = timezone.now()
-newc.cases = 2000
+newc.cases = 30000
 newc.deleted = False
