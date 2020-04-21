@@ -175,4 +175,4 @@ db.restaurants.find( {
             }
         }
     }
-} )
+} ).pretty()

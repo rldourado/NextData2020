@@ -18,26 +18,15 @@ transformers.update( {
 } )
 
 def conversion( csvInputFile, jsonOutputFile ):
-    # data = {}
-
-
     with open( csvInputFile, 'r' ) as csvFile:
         with open( jsonOutputFile, 'w' ) as jsonFile:
             csvReader = csv.DictReader( csvFile )
             for row in csvReader:
                 transformed_row = { key: transformers[ key ]( value ) for key, value in row.items() }
-                # for key, value in row.iteritems():
-                #     ffunc = fieldfixers.get( key )
-                #     if ffunc:
-                #         row[ key ] = ffunc( value )
+
                 print( transformed_row )
                 json.dump( transformed_row, jsonFile, separators = ( ',', ':' ) )
                 jsonFile.write( '\n' )
-                # id = row[ 'id' ]
-                # data[ id ] = row
-
-    # with open( jsonOutputFile, 'w' ) as jsonFile:
-    #     jsonFile.write( json.dumps( data, indent = 4 ) )
 
 def main( argv ):
     print( 'CSV to JSON converter' )

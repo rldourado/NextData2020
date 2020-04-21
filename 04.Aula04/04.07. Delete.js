@@ -8,3 +8,5 @@ db.confirmed.deleteOne(
 db.confirmed.deleteMany(
     { "cases": { "$gt": 100 } }
 )
+
+db.confirmed.deleteMany( {} )

@@ -1,5 +1,6 @@
 use next
 
+// Insere um documento
 db.confirmed.insertOne(
     {
         "aluno": {
@@ -14,6 +15,7 @@ db.confirmed.insertOne(
     }
 )
 
+// Insere um array de documentos
 db.confirmed.insertMany(
     [
         { "aluno": { "id": 0, "nome": "Rubens" }, "country": "Brazil", "lat": -14.235, "lng": -519.253, "date": "2020-01-23", "cases": 0 },
