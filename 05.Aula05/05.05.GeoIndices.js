@@ -11,7 +11,7 @@ db.places.insert(
  
  db.places.insert(
     {
-       'loc' : { 'type': 'Point', 'coordinates': [ -73.88, 40.78 ] },
+       'loc' : { 'type': 'Point', 'coordinates': [ -73.873578, 40.775857 ] },
        'name': 'La Guardia Airport',
        'category' : 'Airport'
     }
